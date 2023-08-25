@@ -19,7 +19,7 @@ This project uses the following services
 * Demo smart contract
 * Sample backend
 	* **POST /api/v1/webhook**: This 	endpoint will receive the webhook events indexed by DarchLabs synchronizer
-	* **Post /api/v1/sc-action**: This endpoint will enable/disable the smart contract to emit or not the example events.
+	* **Post /api/v1/sc-toggle**: This endpoint will enable/disable the smart contract to emit or not the example events.
 
 	
 ## Overview
