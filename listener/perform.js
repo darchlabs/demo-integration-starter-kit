@@ -22,9 +22,10 @@
 
   const connectedContract = contract.connect(wallet);
 
-  const filters = connectedContract.filters.StatusChanged();
+  const tx = await connectedContract.perform()
+  console.log("Transaction hash:", tx.hash);
+  
+  await tx.wait()
+  console.log("Transaction done:");
 
-  connectedContract.on(filters, (bool) => {
-    console.log(`Status changed to ${bool}`);
-  });
 })();
