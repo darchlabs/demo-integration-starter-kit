@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require('body-parser')
 const router = express.Router();
 const dotenv = require("dotenv");
 const { ethers } = require("ethers");
@@ -17,8 +18,10 @@ if (!apiKey || !privateKey || !port) {
 }
 
 router.post("/api/v1/webhook", (req, res) => {
+  console.log("========================")
   console.log(`webhook at ${Date.now()}`);
   console.log(req.body);
+  console.log("========================")
   res.status(200).send();
 });
 
@@ -38,7 +41,7 @@ router.post("/api/v1/sc-toggle", async (req, res) => {
 
   const tx = await changeState.wait();
 
-  console.log(tx);
+  // console.log(tx);
 
   console.log(await connectedContract.isActive())
 
@@ -46,7 +49,7 @@ router.post("/api/v1/sc-toggle", async (req, res) => {
 });
 
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json())
 app.use(router);
 
 app.listen(port, () => {
