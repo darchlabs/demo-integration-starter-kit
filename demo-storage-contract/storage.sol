@@ -10,8 +10,8 @@ contract Storage {
         number = 0;
     }
 
-    function increment(uint256 num) public {
-        number = num;
+    function increment() public {
+        number = number + 1;
         emit Increment();
     }
 
