@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 contract Storage {
     uint256 number;
 
-    event Increment();
+    event Increment(uint256 num);
 
     constructor() {
         number = 0;
@@ -12,7 +12,7 @@ contract Storage {
 
     function increment() public {
         number = number + 1;
-        emit Increment();
+        emit Increment(number);
     }
 
     function retrieve() public view returns (uint256) {
