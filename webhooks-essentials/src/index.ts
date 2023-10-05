@@ -1,4 +1,4 @@
-import { util, webhooks } from "darchlabs";
+import { server, webhooks } from "darchlabs";
 import dotenv from 'dotenv';
 
 // Load environment variables from a .env file
@@ -10,7 +10,7 @@ if (!process.env.PORT) {
 }
 
 const main = async () => {
-	util.ListenServer(Number(process.env.PORT), "/api/v1/webhook", async (wh: webhooks.Webhook<unknown>) => {
+	server.ListenServer(Number(process.env.PORT), "/api/v1/webhook", async (wh: webhooks.Webhook<unknown>) => {
 		console.log("> webhook received!", wh.id)
 	});
 }
