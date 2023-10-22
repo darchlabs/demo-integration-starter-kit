@@ -1,4 +1,4 @@
-import Darchlabs, { util, webhooks } from "darchlabs";
+import Darchlabs from "darchlabs";
 import dotenv from 'dotenv';
 
 // Load environment variables from a .env file
@@ -9,7 +9,11 @@ if (!process.env.YOUR_API_KEY || !process.env.NODE_URL) {
 	throw new Error("missing necessary environment variables. Ensure YOUR_API_KEY and set are set.");
 }
 
-const { synchronizers } = new Darchlabs(process.env.YOUR_API_KEY)
+const { synchronizers } = new Darchlabs(process.env.YOUR_API_KEY, {
+	"synchronizers": "http://192.168.2.162:5555",
+	"jobs": "http://192.168.2.162:3030",
+	"nodes": "http://192.168.2.162:9090",
+})
 
 const main = async () => {
 	// new contract to synchronize
